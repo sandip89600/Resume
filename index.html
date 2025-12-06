@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sandeep Pandit - Frontend Web Developer</title>
-      <link rel="shortcut icon" href="favicon_io/android-chrome-192x192.png" type="image/png">
-    <link rel="shortcut icon" href="favicon_io/android-chrome-512x512.png" type="image/png">
-    <link rel="shortcut icon" href="favicon_io/favicon-32x32.png" type="image/png">
-    <link rel="shortcut icon" href="favicon_io/favicon-16x16.png" type="image/png">
-    <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon_io/android-chrome-192x192.png" type="image/png">
+  <link rel="shortcut icon" href="favicon_io/android-chrome-512x512.png" type="image/png">
+  <link rel="shortcut icon" href="favicon_io/favicon-32x32.png" type="image/png">
+  <link rel="shortcut icon" href="favicon_io/favicon-16x16.png" type="image/png">
+  <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -24,8 +24,52 @@
       background: white;
       color: #1e293b;
       line-height: 1.6;
-      padding: 20px 0;
+      padding: 20px 0 30px;
+      transition: background 0.3s ease, color 0.3s ease;
     }
+
+    /* TOP BAR ACTION BUTTONS */
+    .top-bar {
+      max-width: 1100px;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 0 10px;
+    }
+    .action-btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0f172a;
+      color: #e2e8f0;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    }
+    .action-btn span {
+      font-size: 1.05rem;
+    }
+    .action-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(15,23,42,0.5);
+    }
+    .action-btn.secondary {
+      background: white;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 6px 16px rgba(148,163,184,0.35);
+    }
+    .action-btn.secondary:hover {
+      background: #e2e8f0;
+    }
+
     .resume {
       max-width: 1100px;
       margin: 0 auto;
@@ -35,9 +79,15 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
     @media (max-width: 768px) {
+      body { padding: 15px 0 25px; }
       .resume { grid-template-columns: 1fr; }
+      .top-bar {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
 
     /* LEFT SIDEBAR */
@@ -46,6 +96,7 @@
       color: var(--text-light);
       padding: 50px 40px;
       position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
     }
     .name {
       font-size: 2.8rem;
@@ -60,6 +111,27 @@
       letter-spacing: 3px;
       font-weight: 600;
     }
+
+    .portfolio-highlight {
+      margin-top: 12px;
+    }
+    .portfolio-highlight a {
+      display: inline-block;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+      transition: 0.3s ease;
+    }
+    .portfolio-highlight a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(59,130,246,0.6);
+    }
+
     .contact-info {
       margin: 30px 0;
       font-size: 1rem;
@@ -107,6 +179,7 @@
     .main {
       padding: 50px 55px;
       background: white;
+      transition: background 0.3s ease, color 0.3s ease;
     }
     @media (max-width: 768px) { .main { padding: 40px 30px; } }
 
@@ -128,27 +201,6 @@
       color: #334155;
       margin-bottom: 30px;
     }
-.portfolio-highlight {
-  margin-top: 12px;
-}
-
-.portfolio-highlight a {
-  display: inline-block;
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  color: white;
-  padding: 8px 18px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(59,130,246,0.4);
-  transition: 0.3s ease;
-}
-
-.portfolio-highlight a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(59,130,246,0.6);
-}
 
     .job {
       margin-bottom: 35px;
@@ -228,25 +280,80 @@
       font-size: 1.05rem;
     }
 
+    /* DARK MODE */
+    body.dark-mode {
+      background: #020617;
+      color: #e2e8f0;
+    }
+    body.dark-mode .resume {
+      background: #020617;
+      box-shadow: 0 20px 50px rgba(15,23,42,0.9);
+    }
+    body.dark-mode .main {
+      background: #020617;
+      color: #e2e8f0;
+    }
+    body.dark-mode .summary {
+      color: #e2e8f0;
+    }
+    body.dark-mode .job-title,
+    body.dark-mode .project-name,
+    body.dark-mode .edu-degree {
+      color: #e2e8f0;
+    }
+    body.dark-mode .action-btn {
+      background: #e2e8f0;
+      color: #020617;
+    }
+    body.dark-mode .action-btn.secondary {
+      background: #020617;
+      color: #e2e8f0;
+      border-color: #475569;
+    }
+    body.dark-mode .project-card {
+      background: #020617;
+      box-shadow: 0 5px 20px rgba(15,23,42,0.75);
+    }
+
     @media print {
       body { padding: 0; background: white; }
       .resume { box-shadow: none; border-radius: 0; }
       .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .top-bar { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- TOP ACTION BAR -->
+  <div class="top-bar">
+    <!-- Download Resume (PDF) -->
+    <a href="Sandeep Pandit - Frontend Web Developer.pdf" download="Sandeep-Pandit-Resume.pdf" class="action-btn">
+      <span>🔥</span> Download Resume
+    </a>
+
+    <!-- Print Resume -->
+    <button type="button" class="action-btn secondary" id="print-btn">
+      <span>📄</span> Print Resume
+    </button>
+
+    <!-- Dark Mode Toggle -->
+    <button type="button" class="action-btn" id="dark-toggle">
+      <span>🌙</span> Dark Mode
+    </button>
+  </div>
+
   <div class="resume">
 
     <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
-  <h1 class="name">SANDEEP PANDIT</h1>
-<div class="title">Frontend Web Developer</div>
-<div class="portfolio-highlight">
-  <a href="https://www.sandeeppandit.shop/" target="_blank">
-    👉 Visit My Portfolio
-  </a>
-</div>
+      <h1 class="name">SANDEEP PANDIT</h1>
+      <div class="title">Frontend Web Developer</div>
+      <div class="portfolio-highlight">
+        <a href="https://www.sandeeppandit.shop/" target="_blank">
+          👉 Visit My Portfolio
+        </a>
+      </div>
 
       <div class="contact-info">
         <p>sandippandit896@gmail.com</p>
@@ -387,5 +494,18 @@
 
     </main>
   </div>
+
+  <script>
+    // Print Resume
+    document.getElementById('print-btn').addEventListener('click', function () {
+      window.print();
+    });
+
+    // Dark Mode Toggle (simple class toggle on body)
+    const darkToggle = document.getElementById('dark-toggle');
+    darkToggle.addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
 </body>
 </html>
